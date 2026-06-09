@@ -1,24 +1,19 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        if(needle.size() > haystack.size()){
-            return -1;
-        }
-        int j = 0;
-        while(j < haystack.size()){
-            if(haystack[j] == needle[0]){
-                int ans = j;
-                int i = 0;
-                int k = j;
-                while(haystack[k] == needle[i] && i < needle.size()){
-                    if(i == needle.size() - 1){
-                        return ans;
-                    }
-                    i++;
-                    k++;
+        int a = 0;
+        string sub = "";
+        for(int i = 0 ; i < haystack.size() ; i++){
+            sub.push_back(haystack[i]);
+            if(i - a + 1 > needle.size()){
+                sub.erase(0 , 1);
+                a++;
+            }
+            if(i - a + 1 == needle.size()){
+                if(sub == needle){
+                    return a;
                 }
             }
-            j++;
         }
         return -1;
     }
