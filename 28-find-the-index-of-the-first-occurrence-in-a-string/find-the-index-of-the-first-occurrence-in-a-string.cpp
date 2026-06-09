@@ -1,6 +1,9 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
+        if(needle.size() > haystack.size()){
+            return -1;
+        }
         int j = 0;
         while(j < haystack.size()){
             if(haystack[j] == needle[0]){
