@@ -1,8 +1,21 @@
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        string t = s + s;
-        string w = t.substr(1 , t.size() - 2);
-        return w.find(s) != string::npos;
+        int l = s.size();
+        for(int i = l / 2 ; i >= 1 ; i--){
+            if(l % i == 0){
+                string str = s.substr(0 , i);
+                int times = l / i;
+                string newStr = "";
+                while(times != 0){
+                    newStr += str;
+                    times--;
+                }
+                if(newStr == s){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 };
