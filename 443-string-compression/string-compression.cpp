@@ -1,6 +1,9 @@
 class Solution {
 public:
     int compress(vector<char>& chars) {
+        if(chars.size() == 1){
+            return 1;
+        }
         int i = 0;
         int j = 0;
         while(i < chars.size()){
